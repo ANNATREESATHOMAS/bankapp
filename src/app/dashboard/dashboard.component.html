@@ -1,0 +1,49 @@
+<div class="container w-75 mt-5">
+    <h1 style="color: darkmagenta;">Welcome {{user}}</h1>
+    <a routerLink="/transaction">Transaction History</a>
+    <button style="color: darkmagenta ; background-color: rgb(238, 163, 137);margin-left: 80%; " (click)="deleteFromParent()">Delete account</button>
+    <app-delete (onDelete)="delete($event)" (onCancel)="cancel($event)" [item]='acno'></app-delete>
+<!-- parent dashboard child delete component -->
+    <form action="" [formGroup]="depositForm" (ngSubmit)="deposit()" >
+    <div [ngClass]="acno? 's1':'' " class="row mt-5">
+        <div class="card card1" style="width: 18rem;">
+            <div class="card-header ">
+               <strong> Deposit Form</strong>
+            </div>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="acno"
+                        formControlName="acno" placeholder="Account number" required=""></li>
+                <div *ngIf="(this.depositForm.get('acno')?.touched||this.depositForm.get('acno')?.dirty)&& this.depositForm.get('acno')?.errors" class="error">Invalid username</div>
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="pswd"
+                    formControlName="pswd" placeholder="Password" required=""></li>
+                <div *ngIf="(this.depositForm.get('pswd')?.touched||this.depositForm.get('pswd')?.dirty)&& this.depositForm.get('pswd')?.errors" class="error">Invalid password</div>
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="amount"
+                    formControlName="amount" placeholder="Amount" required=""></li>
+                <div *ngIf="(this.depositForm.get('amount')?.touched||this.depositForm.get('amount')?.dirty)&& this.depositForm.get('amount')?.errors" class="error">Invalid amount</div>
+            </ul>
+            <button type="submit" class="btn btn-dark w-50 but" >Proceed</button>
+        </div>
+    </div>
+</form>
+<form action="" [formGroup]="withdrawForm" (ngSubmit)="withdraw()" >
+    <div [ngClass]="acno? 's1':'' " class="row mt-5">
+        <div class="card card1" style="width: 18rem;">
+            <div class="card-header ">
+               <strong> Withdraw Form</strong>
+            </div>
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="acno"
+                    formControlName="acno" placeholder="Account number" required=""></li>
+                    <div *ngIf="(this.withdrawForm.get('acno')?.touched||this.withdrawForm.get('acno')?.dirty)&& this.withdrawForm.get('acno')?.errors" class="error">Invalid username</div>
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="pswd"
+                    formControlName="pswd" placeholder="Password" required=""></li>
+                    <div *ngIf="(this.withdrawForm.get('pswd')?.touched||this.withdrawForm.get('pswd')?.dirty)&& this.withdrawForm.get('pswd')?.errors" class="error">Invalid password</div>
+                <li class="list-group-item card1"><input type="text" class="form-control box" name="amount"
+                    formControlName="amount" placeholder="Amount" required=""></li>
+                    <div *ngIf="(this.withdrawForm.get('amount')?.touched||this.withdrawForm.get('amount')?.dirty)&& this.withdrawForm.get('amount')?.errors" class="error">Invalid amount</div>
+            </ul>
+            <button type="submit" class="btn btn-dark w-50 but" >Proceed</button>
+        </div>
+    </div>
+</form>
+</div>

@@ -1,0 +1,28 @@
+
+<body>
+    <div class="container w-75">
+        <div class="row">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6">
+            <form action="" class="pt-5 text-white" [formGroup]="registerForm" (ngSubmit)="register()"   >
+                <h1 class="text-center mt-3">Registration Form</h1>
+               <label for="name" class="mt-3">Username</label>
+               <input type="text" id="name" name="uname" formControlName="uname" class="form-control"required=""><br>
+               <div *ngIf="(this.registerForm.get('uname')?.touched||this.registerForm.get('uname')?.dirty)&& this.registerForm.get('uname')?.errors" class="error">Invalid username</div>
+               <label for="acc">Account Number</label>
+               <input type="text" id ="acc" name="acno" formControlName="acno" class="form-control"required=""><br>
+               <div *ngIf="(this.registerForm.get('acno')?.touched||this.registerForm.get('acno')?.dirty)&& this.registerForm.get('acno')?.errors" class="error">Invalid Account number</div>
+              
+               <label for="pass">Password</label>
+               <input type="password" id="pass"class="form-control" name="pswd" formControlName="pswd" required=""><br>
+               <div *ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&& this.registerForm.get('pswd')?.errors" class="error">Invalid password</div>
+               <button type="submit"class="form-control bg bg-dark text-white"  >create</button>
+               <a routerLink="">Login</a>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
+    </div>
+    </div>
+</body>
+
+

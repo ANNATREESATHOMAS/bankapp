@@ -1,0 +1,18 @@
+<body>
+    <p>{{aim}}</p>
+    <div class="container text-white w-50 mt-5">
+        <h1 class="text-center text-white">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-2 p-2">
+                <label for="acc">Account number</label>
+                <input type="text"  id="acc" name="acno" class="form-control" formControlName="acno" placeholder="Account number" required><br>
+                <div *ngIf="(this.loginForm.get('acno')?.touched||this.loginForm.get('acno')?.dirty)&& this.loginForm.get('acno')?.errors" class="error">Invalid Account Number</div>
+                <label for="password">Password</label>
+                <input type="password"  id="password" name="pswd" class="form-control" formControlName="pswd" placeholder="Enter Password" required><br>
+                <div *ngIf="(this.loginForm.get('pswd')?.touched||this.loginForm.get('pswd')?.dirty)&& this.loginForm.get('pswd')?.errors" class="error">Invalid Password</div>
+                <button type="submit"  class="btn btn-dark">login</button>
+                <a routerLink="register">Register</a>
+            </div>
+        </form>
+    </div>
+</body>
